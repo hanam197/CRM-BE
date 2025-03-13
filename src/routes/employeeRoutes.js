@@ -1,6 +1,7 @@
 const express = require("express");
 const {
   createEmployee,
+  getEmployeeById,
   getAllEmployees,
   updateEmployee,
   deleteEmployee,
@@ -15,6 +16,13 @@ router.get("/", authenticate, authorize(["admin", "manager"]), getAllEmployees);
 
 // 🔹 Thêm nhân viên mới
 router.post("/", authenticate, authorize(["admin"]), createEmployee);
+
+router.get(
+  "/:id",
+  authenticate,
+  authorize(["admin", "manager"]),
+  getEmployeeById
+);
 
 // 🔹 Cập nhật thông tin nhân viên
 router.put("/:id", authenticate, authorize(["admin"]), updateEmployee);
