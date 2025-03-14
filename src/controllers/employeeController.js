@@ -1,6 +1,6 @@
 const Employee = require("../models/Employee");
 const Department = require("../models/Department");
-
+const Salary = require("../models/Salary");
 // ✅ Thêm nhân viên mới (Không liên kết User)
 exports.createEmployee = async (req, res) => {
   try {
@@ -55,6 +55,7 @@ exports.getAllEmployees = async (req, res) => {
     );
     res.status(200).json(employees);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error", error });
   }
 };
